@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản Phẩm - Xoài Sấy Khô Cao Cấp</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --neon-primary: #ff00ff;
+            --neon-secondary: #00ffff;
+            --neon-text: #fff;
+            --dark-bg: #0a0a0a;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--neon-text);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--neon-primary);
+            height: 40px;
+        }
+
+        nav .logo a {
+            color: var(--neon-primary);
+            font-size: 1.2rem;
+            text-decoration: none;
+            text-shadow: 0 0 5px var(--neon-primary);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: var(--neon-text);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        nav ul li a:hover {
+            color: var(--neon-secondary);
+            text-shadow: 0 0 5px var(--neon-secondary);
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 60px auto 30px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--neon-secondary);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--neon-primary);
+        }
+
+        .product-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .product-info h3 {
+            color: var(--neon-primary);
+            margin: 0;
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px var(--neon-primary);
+        }
+
+        .product-info p {
+            margin: 0;
+            color: var(--neon-text);
+            font-size: 0.9rem;
+        }
+
+        .price {
+            color: var(--neon-secondary);
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 0 0 5px var(--neon-secondary);
+        }
+
+        .add-to-cart {
+            background: var(--neon-primary);
+            color: var(--dark-bg);
+            border: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background: var(--neon-secondary);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .products-container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+                margin-top: 80px;
+            }
+        }
+
+        /* Rest of the styles */
+        .products-header {
+            text-align: center;
+            margin: 120px auto 2rem;
+            padding: 2rem;
+        }
+
+        .products-header h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .category-btn {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary-color);
+            background: none;
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .product-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .weight-options {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0 1rem 1rem;
+        }
+
+        .weight-btn {
+            padding: 0.3rem 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            background: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .weight-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .product-description {
+            padding: 0 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 8px;
+            margin: 10px;
+        }
+
+        .logo img {
+            max-height: 80px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .product-buttons {
+            display: flex;
+            gap: 10px;
+            padding: 0 1rem 1rem;
+        }
+
+        .add-to-cart-btn, .buy-now-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .add-to-cart-btn {
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .buy-now-btn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .buy-now-btn:hover {
+            background-color: #ff7300;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">Xoài Sấy</a>
+                </div>
+                <ul>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="products.html" class="active">Sản Phẩm</a></li>
+                    <li><a href="about.html">Về Chúng Tôi</a></li>
+                    <li><a href="contact.html">Liên Hệ</a></li>
+                    <li><a href="seller.html">người bán hàng</a></li>
+                    <li><a href="cart.html">Giỏ</a></li>
+                    <li><a href="login.html">Đăng Nhập</a></li>
+                    <li><a href="developer.html">nhà phát triển</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="products-container" id="products">
+        <!-- Products will be loaded here -->
+    </main>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                name: "Xoài Sấy Ngọt Tự Nhiên Premium",
+                price: 99000,
+                image: "images/natural/R.jpeg",
+                description: "Xoài sấy cao cấp với vị ngọt tự nhiên từ trái cây chín mọng."
+            },
+            {
+                id: 2,
+                name: "Xoài Sấy Mật Ong Tự Nhiên",
+                price: 119000,
+                image: "images/natural/yummy-yams.jpg",
+                description: "Xoài sấy tẩm mật ong rừng nguyên chất, thơm ngon bổ dưỡng."
+            },
+            {
+                id: 3,
+                name: "Xoài Sấy Organic",
+                price: 139000,
+                image: "images/natural/Air-Fryer-Butternut-Squash-prep5.webp",
+                description: "Xoài sấy hữucơ 100%, không chất bảo quản, giữ nguyên dưỡng chất."
+            },
+            {
+                id: 4,
+                name: "Xoài Sấy Truyền Thống",
+                price: 89000,
+                image: "images/IMG_3815.jpeg",
+                description: "Xoài sấy theo phương pháp truyền thống, giữ nguyên hương vị tự nhiên."
+            },
+            {
+                id: 5,
+                name: "Xoài Sấy Dẻo",
+                price: 109000,
+                image: "images/OIP (1).jpeg",
+                description: "Xoài sấy dẻo tự nhiên, không chất bảo quản, thơm ngon đặc biệt."
+            },
+            {
+                id: 6,
+                name: "Xoài Sấy Vàng",
+                price: 129000,
+                image: "images/natural/OIP (9).jpeg",
+                description: "Xoài sấy từ giống xoài vàng cao cấp, vị ngọt đậm đà tự nhiên."
+            },
+            {
+                id: 7,
+                name: "Xoài Sấy Cát Chu",
+                price: 119000,
+                image: "images/natural/OIP (2).jpeg",
+                description: "Xoài sấy từ giống xoài Cát Chu nổi tiếng, vị ngọt thanh mát."
+            },
+            {
+                id: 8,
+                name: "Xoài Sấy Mật",
+                price: 139000,
+                image: "images/natural/OIP (1).jpeg",
+                description: "Xoài sấy từ xoài chín mọng, vị ngọt như mật ong tự nhiên."
+            },
+            {
+                id: 9,
+                name: "Xoài Sấy Hoa Lộc",
+                price: 149000,
+                image: "images/natural/R (1).jpeg",
+                description: "Xoài sấy từ giống xoài Hoa Lộc thượng hạng, vị ngọt tinh tế."
+            },
+            {
+                id: 10,
+                name: "Xoài Sấy Không Đường Classic",
+                price: 129000,
+                image: "images/no sugar/OIP (5).jpeg",
+                description: "Xoài sấy nguyên chất không thêm đường, phù hợp cho người ăn kiêng."
+            },
+            {
+                id: 11,
+                name: "Xoài Sấy Diet",
+                price: 149000,
+                image: "images/no sugar/OIP (8).jpeg",
+                description: "Xoài sấy đặc biệt cho người ăn kiêng, không đường, ít calories."
+            },
+            {
+                id: 12,
+                name: "Xoài Sấy Fitness",
+                price: 159000,
+                image: "images/no sugar/OIP (9).jpeg",
+                description: "Xoài sấy giàu protein, không đường, lý tưởng cho người tập thể thao."
+            },
+            {
+                id: 13,
+                name: "Xoài Sấy Light",
+                price: 139000,
+                image: "images/OIP (2).jpeg",
+                description: "Xoài sấy phiên bản light, không đường, phù hợp cho người giảm cân."
+            },
+            {
+                id: 14,
+                name: "Xoài Sấy Keto",
+                price: 169000,
+                image: "images/OIP (3).jpeg",
+                description: "Xoài sấy đặc biệt cho chế độ ăn keto, không đường tự nhiên và nhân tạo."
+            },
+            {
+                id: 15,
+                name: "Xoài Sấy Zero",
+                price: 159000,
+                image: "images/no sugar/OIP (7).jpeg",
+                description: "Xoài sấy 0% đường, phù hợp cho người tiểu đường và ăn kiêng."
+            },
+            {
+                id: 16,
+                name: "Xoài Sấy Low Carb",
+                price: 169000,
+                image: "images/no sugar/OIP (6).jpeg",
+                description: "Xoài sấy ít carb, không đường, phù hợp cho chế độ ăn low carb."
+            },
+            {
+                id: 17,
+                name: "Xoài Sấy Diabetic",
+                price: 179000,
+                image: "images/no sugar/OIP (4).jpeg",
+                description: "Xoài sấy đặc biệt cho người tiểu đường, không chứa đường tự nhiên."
+            },
+            {
+                id: 18,
+                name: "Xoài Sấy Slim",
+                price: 149000,
+                image: "images/no sugar/OIP (3).jpeg",
+                description: "Xoài sấy không đường, giàu chất xơ, hỗ trợ giảm cân hiệu quả."
+            },
+            {
+                id: 19,
+                name: "Xoài Sấy Detox",
+                price: 169000,
+                image: "images/no sugar/OIP (2).jpeg",
+                description: "Xoài sấy không đường kết hợp với các thảo mộc detox tự nhiên."
+            },
+            {
+                id: 20,
+                name: "Xoài Sấy Thảo Dược",
+                price: 179000,
+                image: "images/tree healing/R.jpeg",
+                description: "Xoài sấy kết hợp với các loại thảo dược quý, tốt cho sức khỏe."
+            },
+            {
+                id: 21,
+                name: "Xoài Sấy Gừng Mật Ong",
+                price: 169000,
+                image: "images/tree healing/OIP (4).jpeg",
+                description: "Xoài sấy kết hợp gừng và mật ong, tăng cường sức đề kháng."
+            },
+            {
+                id: 22,
+                name: "Xoài Sấy Nghệ Đen",
+                price: 189000,
+                image: "images/tree healing/OIP (1).jpeg",
+                description: "Xoài sấy kết hợp nghệ đen, giúp thanh lọc cơ thể."
+            },
+            {
+                id: 23,
+                name: "Xoài Sấy Sâm",
+                price: 199000,
+                image: "images/dried-jackkfruit.jpg",
+                description: "Xoài sấy kết hợp nhân sâm, tăng cường sinh lực và sức khỏe."
+            },
+            {
+                id: 24,
+                name: "Xoài Sấy Đông Trùng",
+                price: 299000,
+                image: "images/boxes-of-mao-shan-wang.jpg",
+                description: "Xoài sấy kết hợp đông trùng hạ thảo, bổ dưỡng cao cấp."
+            },
+            {
+                id: 25,
+                name: "Xoài Sấy Linh Chi",
+                price: 219000,
+                image: "images/vacuum-sealed-potatoes-720x480.jpg",
+                description: "Xoài sấy kết hợp nấm linh chi, tăng cường hệ miễn dịch."
+            },
+            {
+                id: 26,
+                name: "Xoài Sấy Tía Tô",
+                price: 159000,
+                image: "images/OIP (6).jpeg",
+                description: "Xoài sấy kết hợp lá tía tô, giúp giải cảm và tăng đề kháng."
+            }
+        ];
+
+        function addToCart(productId) {
+            console.log('Adding product to cart:', productId);
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: 1
+                });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            console.log('Updated cart:', cart);
+            alert('Item added to cart!');
+        }
+
+        function displayProducts() {
+            console.log('Displaying products...');
+            const productsContainer = document.getElementById('products');
+            productsContainer.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <p class="price">₫${product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                        <button onclick="addToCart(${product.id})" class="add-to-cart">Thêm Vào Giỏ</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Load products when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Page loaded, displaying products...');
+            displayProducts();
+        });
+    </script>
+</body>
+</html>

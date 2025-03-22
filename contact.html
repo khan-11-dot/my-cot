@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - Xoài Sấy Khô Cao Cấp</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --neon-primary: #ff00ff;
+            --neon-secondary: #00ffff;
+            --neon-text: #fff;
+            --dark-bg: #0a0a0a;
+        }
+
+        /* Navigation Bar Styles */
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--neon-primary);
+        }
+
+        nav .logo {
+            font-size: 1.2rem;
+        }
+
+        nav .logo a {
+            color: var(--neon-primary);
+            text-decoration: none;
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--neon-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--neon-primary);
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Contact Page Styles */
+        .contact-container {
+            max-width: 1200px;
+            margin: 120px auto 60px;
+            padding: 2rem;
+            color: var(--neon-text);
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .contact-header h1 {
+            color: var(--neon-primary);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px var(--neon-primary);
+        }
+
+        .contact-header p {
+            font-size: 1.2rem;
+            color: var(--neon-text);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-form {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--neon-primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--neon-secondary);
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--neon-secondary);
+            border-radius: 8px;
+            color: var(--neon-text);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--neon-primary);
+            box-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--neon-primary);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--neon-secondary);
+            box-shadow: 0 0 20px var(--neon-secondary);
+        }
+
+        .contact-info {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--neon-secondary);
+        }
+
+        .info-item {
+            margin-bottom: 2rem;
+        }
+
+        .info-item h3 {
+            color: var(--neon-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px var(--neon-secondary);
+        }
+
+        .info-item p {
+            color: var(--neon-text);
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--neon-text);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--neon-primary);
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-header p {
+                font-size: 1.1rem;
+            }
+
+            .contact-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">Xoài Sấy</a>
+                </div>
+                <ul>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="products.html">Sản Phẩm</a></li>
+                    <li><a href="about.html">Về Chúng Tôi</a></li>
+                    <li><a href="contact.html" class="active">Liên Hệ</a></li>
+                    <li><a href="seller.html">người bán hàng</a></li>
+                    <li><a href="cart.html">Giỏ</a></li>
+                    <li><a href="login.html">Đăng Nhập</a></li>
+                    <li><a href="developer.html">nhà phát triển</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="contact-container">
+            <div class="contact-header">
+                <h1>Liên Hệ</h1>
+                <p>Hãy liên hệ với chúng tôi nếu bạn có bất kỳ câu hỏi hoặc đề xuất nào. Chúng tôi luôn sẵn sàng hỗ trợ bạn!</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <form id="contactForm" onsubmit="return handleContact(event)">
+                        <div class="form-group">
+                            <label for="name">Họ và Tên:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số Điện Thoại:</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tin Nhắn:</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Gửi Tin Nhắn</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <div class="info-item">
+                        <h3>Địa Chỉ</h3>
+                        <p>123 Đường ABC, Quận XYZ<br>TP. Hồ Chí Minh, Việt Nam</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Điện Thoại</h3>
+                        <p>+84 123 456 789</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Email</h3>
+                        <p>info@xoaisay.com</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Giờ Làm Việc</h3>
+                        <p>Thứ 2 - Thứ 6: 8:00 - 17:00<br>Thứ 7: 8:00 - 12:00</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function handleContact(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            // Here you would typically send this data to your backend
+            console.log('Contact form submitted:', { name, email, phone, message });
+            
+            // For now, just show a success message
+            alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

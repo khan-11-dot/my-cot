@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - Xoài Sấy Khô Cao Cấp</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--neon-text);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Navigation styles */
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--neon-primary);
+            height: 40px;
+        }
+
+        nav .logo a {
+            color: var(--neon-primary);
+            font-size: 1.2rem;
+            text-decoration: none;
+            text-shadow: 0 0 5px var(--neon-primary);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: var(--neon-text);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        nav ul li a:hover {
+            color: var(--neon-secondary);
+            text-shadow: 0 0 5px var(--neon-secondary);
+        }
+
+        :root {
+            --neon-primary: #ff00ff;
+            --neon-secondary: #00ffff;
+            --neon-text: #fff;
+            --dark-bg: #0a0a0a;
+        }
+
+        .orders-container {
+            max-width: 1200px;
+            margin: 60px auto 30px;
+            padding: 2rem;
+        }
+
+        .order-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--neon-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .order-header h1 {
+            color: var(--neon-primary);
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        .order-summary {
+            text-align: right;
+            color: var(--neon-secondary);
+        }
+
+        .order-card {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--neon-secondary);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .order-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .order-sidebar {
+            border-right: 1px solid var(--neon-secondary);
+            padding-right: 2rem;
+        }
+
+        .order-main {
+            flex: 1;
+        }
+
+        .order-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .order-detail {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .order-detail:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .order-items {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .order-item {
+            display: grid;
+            grid-template-columns: 80px 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .order-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
+        }
+
+        .item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--neon-primary);
+        }
+
+        .item-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .item-details h4 {
+            margin: 0;
+            color: var(--neon-primary);
+            font-size: 1.1rem;
+        }
+
+        .item-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--neon-text);
+        }
+
+        .item-price {
+            color: var(--neon-secondary);
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+
+        .item-quantity {
+            font-size: 0.9rem;
+            color: var(--neon-text);
+        }
+
+        .order-total {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .order-total h3 {
+            color: var(--neon-primary);
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .order-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .status-pending {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+            border: 1px solid #ffc107;
+        }
+
+        .status-confirmed {
+            background: rgba(40, 167, 69, 0.2);
+            color: #28a745;
+            border: 1px solid #28a745;
+        }
+
+        .status-delivered {
+            background: rgba(0, 123, 255, 0.2);
+            color: #007bff;
+            border: 1px solid #007bff;
+        }
+
+        .status-icon {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-pending .status-icon {
+            background-color: #ffc107;
+            box-shadow: 0 0 10px #ffc107;
+        }
+
+        .status-confirmed .status-icon {
+            background-color: #28a745;
+            box-shadow: 0 0 10px #28a745;
+        }
+
+        .status-delivered .status-icon {
+            background-color: #007bff;
+            box-shadow: 0 0 10px #007bff;
+        }
+
+        .empty-orders {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .shop-now-btn {
+            background: var(--neon-primary);
+            color: var(--dark-bg);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .shop-now-btn:hover {
+            background: var(--neon-secondary);
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .orders-container {
+                padding: 1rem;
+                margin-top: 60px;
+            }
+
+            .order-card {
+                grid-template-columns: 1fr;
+            }
+
+            .order-sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--neon-secondary);
+                padding-right: 0;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .order-item {
+                grid-template-columns: 60px 1fr;
+            }
+
+            .item-price {
+                grid-column: 1/-1;
+                flex-direction: row;
+                justify-content: space-between;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">Xoài Sấy Khô</a>
+                </div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="seller.html">người bán hàng</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="orders.html">Orders</a></li>
+                    <li><a href="developer.html">nhà phát triển</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="orders-container">
+        <div class="order-header">
+            <h1>Your Orders</h1>
+            <div class="order-summary">
+                <p>Total Orders: <span id="totalOrders">0</span></p>
+            </div>
+        </div>
+        <div class="orders-list" id="ordersList">
+            <!-- Orders will be loaded here -->
+        </div>
+    </main>
+
+    <script>
+        // Add test data function
+        function addTestOrder() {
+            try {
+                const testOrder = {
+                    id: Date.now(),
+                    items: [
+                        {
+                            id: 1,
+                            name: "Test Product",
+                            price: 150000,
+                            quantity: 2,
+                            image: "images/product1.jpg"
+                        }
+                    ],
+                    address: {
+                        fullName: "Test User",
+                        email: "test@example.com",
+                        phone: "1234567890",
+                        fullAddress: "123 Test Street"
+                    },
+                    subtotal: 300000,
+                    shippingFee: 30000,
+                    totalAmount: 330000,
+                    orderDate: new Date().toISOString(),
+                    status: "Pending"
+                };
+
+                // Get existing orders
+                let existingOrders = [];
+                const ordersStr = localStorage.getItem('orders');
+                console.log('Existing orders string:', ordersStr);
+                
+                if (ordersStr) {
+                    existingOrders = JSON.parse(ordersStr);
+                }
+                
+                // Add new order
+                existingOrders.push(testOrder);
+                
+                // Save back to localStorage
+                localStorage.setItem('orders', JSON.stringify(existingOrders));
+                console.log('Test order added successfully');
+                
+                // Reload orders
+                loadOrders();
+            } catch (error) {
+                console.error('Error adding test order:', error);
+                alert('Error adding test order: ' + error.message);
+            }
+        }
+
+        // Format price with commas
+        function formatPrice(price) {
+            if (typeof price !== 'number') {
+                console.warn('Invalid price value:', price);
+                return '0';
+            }
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            try {
+                const options = { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                };
+                return new Date(dateString).toLocaleDateString('vi-VN', options);
+            } catch (error) {
+                console.error('Error formatting date:', error);
+                return dateString;
+            }
+        }
+
+        // Get status class
+        function getStatusClass(status) {
+            if (!status) {
+                console.warn('Invalid status:', status);
+                return 'status-pending';
+            }
+            
+            switch(status.toLowerCase()) {
+                case 'pending':
+                    return 'status-pending';
+                case 'confirmed':
+                    return 'status-confirmed';
+                case 'delivered':
+                    return 'status-delivered';
+                default:
+                    return 'status-pending';
+            }
+        }
+
+        // Load orders
+        function loadOrders() {
+            console.log('Loading orders...');
+            const ordersList = document.querySelector('.orders-list');
+            const totalOrdersElement = document.getElementById('totalOrders');
+
+            try {
+                // Get orders from localStorage
+                const ordersStr = localStorage.getItem('orders');
+                console.log('Raw orders from localStorage:', ordersStr);
+
+                // Handle empty orders
+                if (!ordersStr) {
+                    console.log('No orders found in localStorage');
+                    showEmptyState();
+                    return;
+                }
+
+                // Parse orders
+                const orders = JSON.parse(ordersStr);
+                console.log('Parsed orders:', orders);
+
+                // Validate orders array
+                if (!Array.isArray(orders)) {
+                    console.error('Orders is not an array:', orders);
+                    throw new Error('Invalid orders data structure');
+                }
+
+                // Update total orders count
+                totalOrdersElement.textContent = orders.length;
+
+                // Show empty state if no orders
+                if (orders.length === 0) {
+                    showEmptyState();
+                    return;
+                }
+
+                // Sort orders by date (newest first)
+                orders.sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate));
+
+                // Generate HTML for orders
+                const ordersHTML = orders.map(order => {
+                    // Validate order object
+                    if (!order || !order.items || !order.address) {
+                        console.error('Invalid order structure:', order);
+                        return '';
+                    }
+
+                    const statusClass = getStatusClass(order.status);
+                    
+                    return `
+                        <div class="order-card" data-order-id="${order.id || 'unknown'}">
+                            <div class="order-sidebar">
+                                <div class="order-date">
+                                    <h3>Order Date</h3>
+                                    <p>${formatDate(order.orderDate)}</p>
+                                </div>
+                                <div class="shipping-info">
+                                    <h3>Shipping To</h3>
+                                    <p>${order.address.fullName || 'N/A'}</p>
+                                    <p>${order.address.phone || 'N/A'}</p>
+                                    <p>${order.address.email || 'N/A'}</p>
+                                    <p>${order.address.fullAddress || 'N/A'}</p>
+                                </div>
+                                <div class="order-status ${statusClass}">
+                                    <span class="status-icon"></span>
+                                    <span class="status-text">${order.status || 'Pending'}</span>
+                                </div>
+                            </div>
+                            <div class="order-content">
+                                <div class="order-items">
+                                    ${order.items.map(item => {
+                                        if (!item) return '';
+                                        return `
+                                            <div class="order-item">
+                                                <img src="${item.image || 'images/default.jpg'}" alt="${item.name || 'Product'}" class="item-image">
+                                                <div class="item-details">
+                                                    <h4>${item.name || 'Unknown Product'}</h4>
+                                                    <div class="item-quantity">Quantity: ${item.quantity || 0}</div>
+                                                    <div class="item-price">
+                                                        <span>${formatPrice(item.price || 0)} VND × ${item.quantity || 0}</span>
+                                                        <span>${formatPrice((item.price || 0) * (item.quantity || 0))} VND</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+                                <div class="order-summary">
+                                    <div class="summary-row">
+                                        <span>Subtotal:</span>
+                                        <span>${formatPrice(order.subtotal || 0)} VND</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span>Shipping Fee:</span>
+                                        <span>${formatPrice(order.shippingFee || 30000)} VND</span>
+                                    </div>
+                                    <div class="summary-row total-row">
+                                        <span>Total:</span>
+                                        <span>${formatPrice(order.totalAmount || 0)} VND</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                // Update the DOM
+                ordersList.innerHTML = ordersHTML;
+                console.log('Orders loaded successfully');
+
+            } catch (error) {
+                console.error('Error loading orders:', error);
+                console.error('Error stack:', error.stack);
+                showErrorState(error.message);
+            }
+        }
+
+        function showEmptyState() {
+            const ordersList = document.querySelector('.orders-list');
+            ordersList.innerHTML = `
+                <div class="empty-orders">
+                    <h2>No orders found</h2>
+                    <p>Start shopping to create your first order!</p>
+                    <div class="empty-orders-actions">
+                        <a href="products.html" class="shop-now-btn">Shop Now</a>
+                        <button onclick="addTestOrder()" class="shop-now-btn">Add Test Order</button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('totalOrders').textContent = '0';
+        }
+
+        function showErrorState(errorMessage) {
+            const ordersList = document.querySelector('.orders-list');
+            ordersList.innerHTML = `
+                <div class="empty-orders">
+                    <h2>Error loading orders</h2>
+                    <p>${errorMessage}</p>
+                    <p>Please check the browser console for more details.</p>
+                    <div class="empty-orders-actions">
+                        <button onclick="loadOrders()" class="shop-now-btn">Retry</button>
+                        <button onclick="clearAndReload()" class="shop-now-btn">Clear Orders & Retry</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function clearAndReload() {
+            try {
+                localStorage.removeItem('orders');
+                console.log('Orders cleared from localStorage');
+                loadOrders();
+            } catch (error) {
+                console.error('Error clearing orders:', error);
+                alert('Error clearing orders: ' + error.message);
+            }
+        }
+
+        // Load orders when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Page loaded, calling loadOrders...');
+            loadOrders();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập - Xoài Sấy Khô Cao Cấp</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --neon-primary: #ff00ff;
+            --neon-secondary: #00ffff;
+            --neon-text: #fff;
+            --dark-bg: #0a0a0a;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Compact Navigation Bar */
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.5rem 1rem;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--neon-primary);
+        }
+
+        nav .logo {
+            font-size: 1.2rem;
+        }
+
+        nav .logo a {
+            color: var(--neon-primary);
+            text-decoration: none;
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--neon-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--neon-primary);
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        /* Login Container Styles */
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            border: 1px solid var(--neon-primary);
+            box-shadow: 0 0 20px var(--neon-primary);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: var(--neon-primary);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        /* Account Details Container */
+        .account-container {
+            display: none;
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            border: 1px solid var(--neon-primary);
+            box-shadow: 0 0 20px var(--neon-primary);
+            color: var(--neon-text);
+        }
+
+        .account-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--neon-secondary);
+        }
+
+        .account-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--neon-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-right: 1.5rem;
+            border: 2px solid var(--neon-secondary);
+        }
+
+        .account-info h2 {
+            color: var(--neon-primary);
+            margin: 0 0 0.5rem;
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        .account-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .detail-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--neon-secondary);
+        }
+
+        .detail-item h3 {
+            color: var(--neon-secondary);
+            margin: 0 0 0.5rem;
+            font-size: 1rem;
+        }
+
+        .detail-item p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .logout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--neon-primary);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: var(--neon-secondary);
+            box-shadow: 0 0 20px var(--neon-secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--neon-text);
+            font-size: 1rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--neon-secondary);
+            border-radius: 8px;
+            color: var(--neon-text);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--neon-primary);
+            box-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--neon-primary);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            background: var(--neon-secondary);
+            box-shadow: 0 0 20px var(--neon-secondary);
+            transform: translateY(-2px);
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--neon-text);
+        }
+
+        .register-link a {
+            color: var(--neon-primary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .register-link a:hover {
+            color: var(--neon-secondary);
+            text-shadow: 0 0 10px var(--neon-secondary);
+        }
+
+        .error-message {
+            color: #ff4444;
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+
+            .login-container, .account-container {
+                margin: 80px auto;
+                padding: 1.5rem;
+            }
+
+            .account-details {
+                grid-template-columns: 1fr;
+            }
+
+            .account-avatar {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">Xoài Sấy</a>
+                </div>
+                <ul>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="products.html">Sản Phẩm</a></li>
+                    <li><a href="about.html">Về Chúng Tôi</a></li>
+                    <li><a href="contact.html">Liên Hệ</a></li>
+                    <li><a href="seller.html">người bán hàng</a></li>
+                    <li><a href="cart.html">Giỏ</a></li>
+                    <li><a href="login.html" class="active">Đăng Nhập</a></li>
+                    <li><a href="developer.html">nhà phát triển</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="loginForm" class="login-container">
+            <h2>Đăng Nhập</h2>
+            <form onsubmit="return handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div id="errorMessage" class="error-message"></div>
+                <button type="submit" class="login-btn">Đăng Nhập</button>
+                <div class="register-link">
+                    <p>Chưa có tài khoản? <a href="register.html">Đăng ký ngay</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div id="accountDetails" class="account-container" style="display: none;">
+            <div class="account-header">
+                <div class="account-avatar" id="userAvatar"></div>
+                <div class="account-info">
+                    <h2 id="userName">Tên Người Dùng</h2>
+                    <p id="userEmail">email@example.com</p>
+                </div>
+            </div>
+            <div class="account-details">
+                <div class="detail-item">
+                    <h3>Số Điện Thoại</h3>
+                    <p id="userPhone">0123456789</p>
+                </div>
+                <div class="detail-item">
+                    <h3>Địa Chỉ</h3>
+                    <p id="userAddress">Địa chỉ người dùng</p>
+                </div>
+                <div class="detail-item">
+                    <h3>Ngày Tham Gia</h3>
+                    <p id="userJoinDate">01/01/2024</p>
+                </div>
+                <div class="detail-item">
+                    <h3>Đơn Hàng</h3>
+                    <p id="userOrders">0 đơn hàng</p>
+                </div>
+            </div>
+            <button class="logout-btn" onclick="handleLogout()">Đăng Xuất</button>
+        </div>
+    </main>
+
+    <script>
+        function checkLoginStatus() {
+            const currentUser = localStorage.getItem('currentUser');
+            const loginForm = document.getElementById('loginForm');
+            const accountDetails = document.getElementById('accountDetails');
+            
+            if (currentUser) {
+                const user = JSON.parse(currentUser);
+                
+                // Hide login form and show account details
+                loginForm.style.display = 'none';
+                accountDetails.style.display = 'block';
+                
+                // Update user details
+                document.getElementById('userName').textContent = user.fullName;
+                document.getElementById('userEmail').textContent = user.email;
+                document.getElementById('userPhone').textContent = user.phone || 'Chưa cập nhật';
+                document.getElementById('userAddress').textContent = user.address || 'Chưa cập nhật';
+                document.getElementById('userJoinDate').textContent = new Date(user.joinDate || Date.now()).toLocaleDateString('vi-VN');
+                
+                // Get user avatar initial
+                const initial = user.fullName ? user.fullName.charAt(0).toUpperCase() : '?';
+                document.getElementById('userAvatar').textContent = initial;
+                
+                // Get user orders
+                const orders = JSON.parse(localStorage.getItem('orders')) || [];
+                const userOrders = orders.filter(order => order.userId === user.email);
+                document.getElementById('userOrders').textContent = `${userOrders.length} đơn hàng`;
+            } else {
+                loginForm.style.display = 'block';
+                accountDetails.style.display = 'none';
+            }
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                const { password: _, ...userInfo } = user;
+                userInfo.joinDate = userInfo.joinDate || new Date().toISOString();
+                localStorage.setItem('currentUser', JSON.stringify(userInfo));
+                checkLoginStatus();
+            } else {
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = 'Email hoặc mật khẩu không đúng!';
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('currentUser');
+            checkLoginStatus();
+        }
+
+        // Check login status when page loads
+        document.addEventListener('DOMContentLoaded', checkLoginStatus);
+    </script>
+</body>
+</html>

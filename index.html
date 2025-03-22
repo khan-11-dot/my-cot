@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xoài Sấy Khô Cao Cấp - Trái Cây Khô Chất Lượng Tốt Nhất</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --neon-primary: #ff00ff;
+            --neon-secondary: #00ffff;
+            --neon-text: #fff;
+            --dark-bg: #0a0a0a;
+        }
+
+        /* Navigation Bar Styles */
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--neon-primary);
+        }
+
+        nav .logo {
+            font-size: 1.2rem;
+        }
+
+        nav .logo a {
+            color: var(--neon-primary);
+            text-decoration: none;
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--neon-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--neon-primary);
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Hero Styles */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/cb1f3bc413fe84b285fed1bc1b929c59.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+        }
+
+        /* Featured Section Styles */
+        .featured-section {
+            background-color: #fff;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .featured-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .product-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .showcase-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .showcase-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .showcase-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .showcase-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 2rem;
+            color: white;
+        }
+
+        /* Quality Section Styles */
+        .quality-section {
+            background-color: #fff9f0;
+            padding: 6rem 0;
+        }
+
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .quality-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .quality-item img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* CTA Section Styles */
+        .cta-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/cta-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 6rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .featured-section h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">Xoài Sấy</a>
+                </div>
+                <ul>
+                    <li><a href="index.html" class="active">Trang Chủ</a></li>
+                    <li><a href="products.html">Sản Phẩm</a></li>
+                    <li><a href="about.html">Về Chúng Tôi</a></li>
+                    <li><a href="contact.html">Liên Hệ</a></li>
+                    <li><a href="seller.html">người bán hàng</a></li>
+                    <li><a href="cart.html">Giỏ</a></li>
+                    <li><a href="login.html">Đăng Nhập</a></li>
+                    <li><a href="developer.html">nhà phát triển</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Xoài Sấy Khô Cao Cấp</h1>
+                <p>100% Tự Nhiên | Không Thêm Đường | Chất Lượng Cao</p>
+                <a href="products.html" class="cta-button">Khám Phá Ngay</a>
+            </div>
+        </section>
+
+        <section class="featured-section">
+            <h2>Sản Phẩm Nổi Bật</h2>
+            <div class="product-showcase">
+                <div class="showcase-item">
+                    <img src="images/OIP (7).jpeg" alt="Xoài Sấy Tự Nhiên">
+                    <div class="showcase-content">
+                        <h3>Xoài Sấy Tự Nhiên</h3>
+                        <p>359.000 VNĐ/500g</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <img src="images/OIP (8).jpeg" alt="Xoài Sấy Giòn">
+                    <div class="showcase-content">
+                        <h3>Xoài Sấy Giòn</h3>
+                        <p>299.000 VNĐ/500g</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <img src="images/dried-jackkfruit.jpg" alt="Xoài Sấy Chua Cay">
+                    <div class="showcase-content">
+                        <h3>Xoài Sấy Chua Cay</h3>
+                        <p>429.000 VNĐ/500g</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quality-section">
+            <div class="quality-grid">
+                <div class="quality-item">
+                    <img src="images/OIP (4).jpeg" alt="100% Tự Nhiên">
+                    <h3>100% Tự Nhiên</h3>
+                    <p>Không chất bảo quản hoặc phụ gia, giữ nguyên hương vị tự nhiên của xoài</p>
+                </div>
+                <div class="quality-item">
+                    <img src="images/OIP (5).jpeg" alt="Giao Hàng Toàn Quốc">
+                    <h3>Giao Hàng Toàn Quốc</h3>
+                    <p>Giao hàng nhanh chóng đến mọi tỉnh thành trên cả nước</p>
+                </div>
+                <div class="quality-item">
+                    <img src="images/OIP (6).jpeg" alt="Chất Lượng Cao">
+                    <h3>Chất Lượng Cao</h3>
+                    <p>Xoài được chọn lọc kỹ càng từ những vườn xoài tốt nhất</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Thưởng Thức Hương Vị Tự Nhiên</h2>
+                <p>Đặt hàng ngay hôm nay để nhận ưu đãi đặc biệt</p>
+                <a href="products.html" class="cta-button">Mua Ngay</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Liên Hệ</h3>
+                <p> 0123 456 789</p>
+                <p> info@xoaisaykhongon.vn</p>
+            </div>
+            <div class="social-links">
+                <h3>Kết Nối</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Zalo</a>
+            </div>
+        </div>
+        <p class="copyright"> 2024 Xoài Sấy Khô Cao Cấp. Đã đăng ký bản quyền.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

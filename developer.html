@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Profile - Xoài Sấy Khô</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #ff00ff;
+            --neon-green: #39ff14;
+            --neon-text: #fff;
+            --neon-primary: #00f3ff;
+            --neon-secondary: #ff00ff;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+        }
+
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .background-image {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            left: -10%;
+            object-fit: cover;
+            opacity: 0.35;
+            filter: brightness(1.1) contrast(1.2);
+            animation: subtleMove 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes subtleMove {
+            from { transform: scale(1) rotate(0deg); }
+            to { transform: scale(1.1) rotate(3deg); }
+        }
+
+        /* Container and layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Section title styling */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--neon-primary);
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        .developer-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            border: 1px solid var(--neon-primary);
+            box-shadow: 0 0 20px var(--neon-primary);
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--neon-primary);
+            box-shadow: 0 0 15px var(--neon-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-primary);
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        .profile-info p {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--neon-text);
+        }
+
+        .skills-section {
+            width: 100%;
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            border: 1px solid var(--neon-secondary);
+            box-shadow: 0 0 20px var(--neon-secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--neon-blue);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .skill-card h3 {
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            text-shadow: 0 0 5px var(--neon-blue);
+        }
+
+        .skill-card p {
+            color: var(--neon-text);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .progress-section {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            border: 1px solid var(--neon-purple);
+            box-shadow: 0 0 20px var(--neon-purple);
+        }
+
+        .progress-container {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .progress-item h3 {
+            color: var(--neon-text);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--neon-primary);
+            border-radius: 5px;
+            transition: width 1s ease;
+        }
+
+        .progress-text {
+            position: absolute;
+            right: 0;
+            top: -25px;
+            color: var(--neon-text);
+            font-size: 1rem;
+        }
+
+        .contact-section {
+            padding: 4rem 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            border: 1px solid var(--neon-purple);
+            box-shadow: 0 0 20px var(--neon-purple);
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            border: 1px solid var(--neon-blue);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            color: var(--neon-text);
+        }
+
+        .contact-item i {
+            color: var(--neon-blue);
+            font-size: 1.3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-link {
+            color: var(--neon-text);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--neon-primary);
+            transform: translateY(-3px);
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        .contact-message {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 15px var(--neon-green);
+        }
+
+        .contact-message h3 {
+            color: var(--neon-primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        .contact-message p {
+            color: var(--neon-text);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .contact-message ul {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .contact-message ul li {
+            color: var(--neon-text);
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .contact-message ul li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--neon-secondary);
+            text-shadow: 0 0 5px var(--neon-secondary);
+        }
+
+        .cta-text {
+            color: var(--neon-green) !important;
+            font-size: 1.4rem !important;
+            font-weight: bold;
+            text-shadow: 0 0 5px var(--neon-green);
+            margin: 2rem 0 !important;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .email-btn {
+            background: var(--neon-primary);
+        }
+
+        .email-btn:hover {
+            background: var(--neon-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px #128C7E;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px var(--neon-blue),
+                            0 0 20px var(--neon-blue);
+            }
+            to {
+                text-shadow: 0 0 20px var(--neon-blue),
+                            0 0 30px var(--neon-blue),
+                            0 0 40px var(--neon-blue);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .developer-profile {
+                padding: 2rem 1rem;
+            }
+
+            .profile-info h1 {
+                font-size: 2rem;
+            }
+
+            .profile-info p {
+                font-size: 1.1rem;
+            }
+
+            .contact-message h3 {
+                font-size: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .profile-info h1 {
+                font-size: 1.8rem;
+            }
+
+            .contact-info {
+                padding: 1.5rem;
+            }
+
+            .contact-message {
+                padding: 1.5rem;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+        }
+
+        /* Navigation styles */
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--neon-primary);
+        }
+
+        nav .logo {
+            font-size: 1.2rem;
+        }
+
+        nav .logo a {
+            color: var(--neon-primary);
+            text-decoration: none;
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--neon-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--neon-primary);
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Adjust main content to account for fixed nav */
+        main {
+            padding-top: 80px;
+        }
+
+        .skills-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skills-section h2 {
+            text-align: center;
+            color: #2ecc71;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 0 15px rgba(46, 204, 113, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
+        }
+
+        .skill-card h3 {
+            color: #2ecc71;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            text-shadow: 0 0 5px rgba(46, 204, 113, 0.5);
+        }
+
+        .skill-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-card li {
+            color: #fff;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-card li:before {
+            content: "▹";
+            color: #2ecc71;
+            position: absolute;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">Xoài Sấy</a>
+                </div>
+                <ul>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="products.html">Sản Phẩm</a></li>
+                    <li><a href="seller.html">người bán hàng</a></li>
+                    <li><a href="cart.html">Giỏ</a></li>
+                    <li><a href="login.html">Đăng Nhập</a></li>
+                    <li><a href="developer.html" class="active">nhà phát triển</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="developer-profile">
+                <img src="images/developer/m.jpg" alt="Developer Profile" class="profile-image">
+                <div class="profile-info">
+                    <h1>Bilal Ahmad</h1>
+                    <p>Chuyên Gia Thiết Kế & Phát Triển Website</p>
+                    <p>Với Hơn 5 Năm Kinh Nghiệm</p>
+                </div>
+            </section>
+
+            <section class="skills-section">
+                <h2>Kỹ năng và khả năng</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>AI & Machine Learning</h3>
+                        <ul>
+                            <li>Natural Language Processing</li>
+                            <li>Code Generation & Analysis</li>
+                            <li>Context-Aware Programming</li>
+                            <li>Intelligent Code Completion</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Web Development</h3>
+                        <ul>
+                            <li>HTML5, CSS3, JavaScript</li>
+                            <li>Responsive Design</li>
+                            <li>UI/UX Best Practices</li>
+                            <li>Modern Web Frameworks</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Backend Development</h3>
+                        <ul>
+                            <li>API Design & Integration</li>
+                            <li>Database Management</li>
+                            <li>Server Architecture</li>
+                            <li>Security Implementation</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Development Tools</h3>
+                        <ul>
+                            <li>Version Control (Git)</li>
+                            <li>Code Review & Analysis</li>
+                            <li>Testing & Debugging</li>
+                            <li>Performance Optimization</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Languages</h3>
+                        <ul>
+                            <li>Python</li>
+                            <li>JavaScript/TypeScript</li>
+                            <li>Java</li>
+                            <li>C/C++</li>
+                            <li>SQL</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Special Abilities</h3>
+                        <ul>
+                            <li>Pair Programming</li>
+                            <li>Code Documentation</li>
+                            <li>Problem Solving</li>
+                            <li>Memory Management</li>
+                            <li>Tool Integration</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="skills-section">
+                <h2 class="section-title">Kỹ Năng Chuyên Môn</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Thiết Kế Website</h3>
+                        <p>HTML5, CSS3, JavaScript, Bootstrap</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Phát Triển Backend</h3>
+                        <p>Node.js, Python, PHP, MySQL</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>UI/UX Design</h3>
+                        <p>Figma, Adobe XD, Responsive Design</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="progress-section">
+                <h2 class="section-title">Kinh Nghiệm</h2>
+                <div class="progress-container">
+                    <div class="progress-item">
+                        <h3>Thiết Kế Website</h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 95%"></div>
+                            <span class="progress-text">95%</span>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <h3>Phát Triển Backend</h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%"></div>
+                            <span class="progress-text">90%</span>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <h3>UI/UX Design</h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%"></div>
+                            <span class="progress-text">85%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-section">
+                <h2 class="section-title">Liên Hệ Với Tôi</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email: ahmadadalbilal@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>Điện Thoại: +923439224280</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Địa Điểm: Pakistan</span>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://github.com/yourusername" target="_blank" class="social-link" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/yourusername" target="_blank" class="social-link" title="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://wa.me/923439224280" target="_blank" class="social-link" title="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-message">
+                        <h3>Bạn Muốn Có Website Chuyên Nghiệp?</h3>
+                        <p>Tôi cung cấp các dịch vụ thiết kế website chất lượng cao:</p>
+                        <ul>
+                            <li>Thiết kế giao diện hiện đại, độc đáo</li>
+                            <li>Tối ưu trải nghiệm người dùng</li>
+                            <li>Tương thích với mọi thiết bị</li>
+                            <li>Tích hợp tính năng theo yêu cầu</li>
+                            <li>Hỗ trợ kỹ thuật 24/7</li>
+                        </ul>
+                        <p class="cta-text">Liên Hệ Ngay Để Được Tư Vấn!</p>
+                        <div class="cta-buttons">
+                            <a href="mailto:ahmadadalbilal@gmail.com" class="cta-button email-btn">
+                                <i class="fas fa-envelope"></i> Gửi Email
+                            </a>
+                            <a href="https://wa.me/923439224280" class="cta-button whatsapp-btn" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Bilal Ahmad. Mọi quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animation for skill cards on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

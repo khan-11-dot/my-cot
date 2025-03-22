@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tram Pham Mai Chi - Người Bán | Xoài Sấy Khô Cao Cấp</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --neon-primary: #ff00ff;
+            --neon-secondary: #00ffff;
+            --neon-text: #fff;
+            --dark-bg: #0a0a0a;
+            --dark-card: #151515;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--neon-text);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .seller-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/SELLER/SELLER.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--neon-text);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .seller-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow: inset 0 0 100px var(--neon-primary);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            max-width: 800px;
+            border: 1px solid var(--neon-primary);
+            box-shadow: 0 0 20px var(--neon-primary);
+            animation: neonPulse 2s infinite;
+        }
+
+        @keyframes neonPulse {
+            0% { box-shadow: 0 0 20px var(--neon-primary); }
+            50% { box-shadow: 0 0 40px var(--neon-primary); }
+            100% { box-shadow: 0 0 20px var(--neon-primary); }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px var(--neon-primary);
+            color: var(--neon-text);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            color: var(--neon-secondary);
+            text-shadow: 0 0 5px var(--neon-secondary);
+        }
+
+        .seller-profile {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--dark-card);
+            margin-top: -50px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
+            position: relative;
+            border: 1px solid var(--neon-secondary);
+        }
+
+        .seller-info {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            align-items: start;
+        }
+
+        .seller-image {
+            width: 100%;
+            height: auto;
+            min-height: 350px;
+            object-fit: contain;
+            border-radius: 15px;
+            box-shadow: 0 0 20px var(--neon-secondary);
+            border: 2px solid var(--neon-secondary);
+            transition: all 0.3s ease;
+            background: var(--dark-card);
+            padding: 10px;
+        }
+
+        .seller-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px var(--neon-primary);
+        }
+
+        .seller-details {
+            padding: 1.5rem;
+            background: rgba(21, 21, 21, 0.8);
+            border-radius: 15px;
+            border: 1px solid var(--neon-primary);
+        }
+
+        .seller-details h2 {
+            color: var(--neon-primary);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            text-shadow: 0 0 10px var(--neon-primary);
+            border-bottom: 2px solid var(--neon-primary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .seller-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .stat-card {
+            background: var(--dark-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--neon-secondary);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px var(--neon-secondary);
+        }
+
+        .stat-card h3 {
+            color: var(--neon-secondary);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 5px var(--neon-secondary);
+        }
+
+        .stat-card p {
+            color: var(--neon-text);
+            font-size: 1.1rem;
+        }
+
+        .seller-gallery {
+            margin: 4rem 0;
+            padding: 0 2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid var(--neon-primary);
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: var(--dark-card);
+            padding: 10px;
+        }
+
+        .gallery-item.large {
+            grid-column: span 6;
+            grid-row: span 2;
+        }
+
+        .gallery-item.medium {
+            grid-column: span 4;
+        }
+
+        .gallery-item.small {
+            grid-column: span 3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            min-height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            border-bottom: 2px solid var(--neon-secondary);
+        }
+
+        .gallery-item:hover .gallery-item-caption {
+            transform: translateY(0);
+        }
+
+        .gallery-item-caption h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--neon-primary);
+            text-shadow: 0 0 5px var(--neon-primary);
+        }
+
+        .gallery-item-caption p {
+            margin: 0;
+            font-size: 1rem;
+            opacity: 0.9;
+            color: var(--neon-secondary);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: rgba(0, 0, 0, 0.9);
+            margin: 5% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            border: 1px solid var(--neon-primary);
+            border-radius: 8px;
+            box-shadow: 0 0 20px var(--neon-primary);
+            position: relative;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--neon-text);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--neon-primary);
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--neon-text);
+            border-radius: 4px;
+        }
+
+        .error-message {
+            color: #dc3545;
+            margin: 10px 0;
+            display: none;
+        }
+
+        .login-btn {
+            background: var(--neon-primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .login-btn:hover {
+            background: var(--neon-secondary);
+            transform: translateY(-2px);
+        }
+
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .logout-btn:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        .manage-orders-btn {
+            background: var(--neon-primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .manage-orders-btn:hover {
+            background: var(--neon-secondary);
+            transform: translateY(-2px);
+        }
+
+        #ordersList {
+            margin-top: 20px;
+        }
+
+        .order-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--neon-primary);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.2);
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 0, 255, 0.2);
+        }
+
+        .order-info h3 {
+            color: var(--neon-primary);
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+        }
+
+        .order-info p {
+            margin: 5px 0;
+            color: var(--neon-text);
+        }
+
+        .order-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .accept-btn, .reject-btn, .print-btn, .delete-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            color: white;
+        }
+
+        .accept-btn {
+            background: #28a745;
+        }
+
+        .reject-btn {
+            background: #dc3545;
+        }
+
+        .print-btn {
+            background: #17a2b8;
+        }
+
+        .delete-btn {
+            background: #6c757d;
+        }
+
+        .accept-btn:hover { background: #218838; }
+        .reject-btn:hover { background: #c82333; }
+        .print-btn:hover { background: #138496; }
+        .delete-btn:hover { background: #5a6268; }
+
+        .shipping-info {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .shipping-info h4 {
+            color: var(--neon-primary);
+            margin: 0 0 10px 0;
+        }
+
+        .shipping-info p {
+            margin: 5px 0;
+            color: var(--neon-text);
+        }
+
+        .order-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid var(--neon-primary);
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-details h4 {
+            color: var(--neon-primary);
+            margin: 0 0 5px 0;
+        }
+
+        .item-details p {
+            margin: 3px 0;
+            color: var(--neon-text);
+        }
+
+        .item-price {
+            text-align: right;
+            min-width: 150px;
+        }
+
+        .order-summary {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 0, 255, 0.2);
+            text-align: right;
+        }
+
+        .order-summary p {
+            margin: 5px 0;
+            color: var(--neon-text);
+        }
+
+        .order-summary .total {
+            color: var(--neon-primary);
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .status-pending {
+            color: #ffc107;
+        }
+
+        .status-confirmed {
+            color: #28a745;
+        }
+
+        .status-rejected {
+            color: #dc3545;
+        }
+
+        .no-orders {
+            text-align: center;
+            padding: 40px;
+            color: var(--neon-text);
+            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border: 1px solid var(--neon-primary);
+        }
+
+        /* Navigation styles */
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--neon-primary);
+        }
+
+        nav .logo {
+            font-size: 1.2rem;
+        }
+
+        nav .logo a {
+            color: var(--neon-primary);
+            text-decoration: none;
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--neon-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--neon-primary);
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+            .gallery-item.large {
+                grid-column: span 6;
+            }
+            .gallery-item.medium {
+                grid-column: span 3;
+            }
+            .gallery-item.small {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .gallery-item.large {
+                grid-column: span 4;
+            }
+            .gallery-item.medium {
+                grid-column: span 4;
+            }
+            .gallery-item.small {
+                grid-column: span 2;
+            }
+            .seller-info {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            .seller-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Order Management Button and Modal */
+        .manage-orders-btn {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--neon-primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px var(--neon-primary);
+            z-index: 99;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            height: auto;
+            min-height: 200px;
+        }
+
+        .manage-orders-btn:hover {
+            background: var(--neon-secondary);
+            transform: translateY(-50%) translateX(-10px);
+            box-shadow: 0 0 30px var(--neon-secondary);
+        }
+
+        .orders-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .orders-modal.active {
+            display: block;
+        }
+
+        .orders-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 2rem;
+        }
+
+        .orders-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--neon-primary);
+        }
+
+        .orders-header h2 {
+            color: var(--neon-primary);
+            margin: 0;
+            font-size: 2rem;
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        .close-orders {
+            background: transparent;
+            border: 2px solid var(--neon-primary);
+            color: var(--neon-primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .close-orders:hover {
+            background: var(--neon-primary);
+            color: var(--dark-bg);
+            box-shadow: 0 0 15px var(--neon-primary);
+        }
+
+        .order-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--neon-secondary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .order-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px var(--neon-secondary);
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--neon-secondary);
+        }
+
+        .order-info h3 {
+            color: var(--neon-secondary);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+            text-shadow: 0 0 5px var(--neon-secondary);
+        }
+
+        .order-info p {
+            margin: 0.3rem 0;
+            color: var(--neon-text);
+            opacity: 0.9;
+        }
+
+        .order-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .accept-btn, .reject-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .accept-btn {
+            background: #28a745;
+            color: white;
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+        }
+
+        .reject-btn {
+            background: #dc3545;
+            color: white;
+            box-shadow: 0 0 10px rgba(220, 53, 69, 0.5);
+        }
+
+        .accept-btn:hover, .reject-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .accept-btn:hover {
+            box-shadow: 0 0 20px rgba(40, 167, 69, 0.7);
+        }
+
+        .reject-btn:hover {
+            box-shadow: 0 0 20px rgba(220, 53, 69, 0.7);
+        }
+
+        .status-pending {
+            color: #ffc107;
+            text-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+        }
+
+        .status-confirmed {
+            color: #28a745;
+            text-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+        }
+
+        .status-rejected {
+            color: #dc3545;
+            text-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+        }
+
+        .shipping-info {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        .shipping-info h4 {
+            color: var(--neon-primary);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .shipping-info p {
+            margin: 0.3rem 0;
+            color: var(--neon-text);
+            opacity: 0.8;
+        }
+
+        .order-items {
+            margin-top: 1.5rem;
+        }
+
+        .order-item {
+            display: grid;
+            grid-template-columns: 80px 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .order-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--neon-secondary);
+        }
+
+        .item-details h4 {
+            color: var(--neon-text);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .item-details p {
+            color: var(--neon-text);
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        .item-price {
+            text-align: right;
+        }
+
+        .item-price p {
+            margin: 0.2rem 0;
+            color: var(--neon-text);
+        }
+
+        .item-price strong {
+            color: var(--neon-secondary);
+            font-size: 1.1rem;
+        }
+
+        .order-summary {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--neon-secondary);
+            text-align: right;
+        }
+
+        .order-summary p {
+            margin: 0.3rem 0;
+            color: var(--neon-text);
+        }
+
+        .order-summary strong {
+            color: var(--neon-primary);
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px var(--neon-primary);
+        }
+
+        .no-orders {
+            text-align: center;
+            padding: 3rem;
+            color: var(--neon-text);
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--neon-primary);
+            z-index: 1001;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .login-modal.active {
+            display: block;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 1rem;
+            box-shadow: 0 0 10px rgba(220, 53, 69, 0.5);
+        }
+
+        .delete-btn:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(220, 53, 69, 0.7);
+        }
+
+        .print-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 1rem;
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+        }
+
+        .print-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(40, 167, 69, 0.7);
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">Xoài Sấy</a>
+                </div>
+                <ul>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="products.html">Sản Phẩm</a></li>
+                    <li><a href="about.html">Về Chúng Tôi</a></li>
+                    <li><a href="contact.html">Liên Hệ</a></li>
+                    <li><a href="seller.html" class="active">người bán hàng</a></li>
+                    <li><a href="cart.html">Giỏ</a></li>
+                    <li><a href="login.html">Đăng Nhập</a></li>
+                    <li><a href="developer.html">nhà phát triển</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="seller-hero">
+            <div class="hero-content">
+                <h1>Tram Pham Mai Chi</h1>
+                <p>Chuyên Gia Xoài Sấy Khô Cao Cấp</p>
+            </div>
+            <button onclick="checkLoginAndShowOrders()" class="manage-orders-btn">Quản lý đơn hàng</button>
+        </section>
+
+        <section class="seller-profile">
+            <div class="seller-info">
+                <img src="images/SELLER/seller2.jpg" alt="Tram Pham Mai Chi" class="seller-image">
+                <div class="seller-details">
+                    <h2>Giới Thiệu</h2>
+                    <p>Xin chào! Tôi là Tram Pham Mai Chi, một chuyên gia trong lĩnh vực chế biến và kinh doanh xoài sấy khô cao cấp. Với hơn 10 năm kinh nghiệm, tôi tự hào mang đến cho khách hàng những sản phẩm xoài sấy khô chất lượng nhất.</p>
+                    <div class="seller-stats">
+                        <div class="stat-card">
+                            <h3>10+</h3>
+                            <p>Năm Kinh Nghiệm</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>1000+</h3>
+                            <p>Khách Hàng Hài Lòng</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>5⭐</h3>
+                            <p>Đánh Giá Trung Bình</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="seller-gallery">
+            <h2 class="section-title">Hình Ảnh Sản Xuất & Chế Biến</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item large">
+                    <img src="images/SELLER/seller6.jpg" alt="Tram Pham Mai Chi">
+                    <div class="gallery-item-caption">
+                        <h3>Tram Pham Mai Chi</h3>
+                        <p>Chuyên Gia Xoài Sấy Khô Cao Cấp</p>
+                    </div>
+                </div>
+                <div class="gallery-item medium">
+                    <img src="images/SELLER/seller5.jpg" alt="Kho bảo quản">
+                    <div class="gallery-item-caption">
+                        <h3>Kho Bảo Quản Hiện Đại</h3>
+                        <p>Môi trường lý tưởng cho sản phẩm cao cấp</p>
+                    </div>
+                </div>
+                <div class="gallery-item medium">
+                    <img src="images/SELLER/seller3.jpg" alt="Sản phẩm hoàn thiện">
+                    <div class="gallery-item-caption">
+                        <h3>Sản Phẩm Cao Cấp</h3>
+                        <p>Chất lượng đạt chuẩn xuất khẩu quốc tế</p>
+                    </div>
+                </div>
+                <div class="gallery-item large">
+                    <img src="images/SELLER/seller7.jpg" alt="Dịch vụ khách hàng">
+                    <div class="gallery-item-caption">
+                        <h3>Dịch Vụ Khách Hàng</h3>
+                        <p>Tận tâm phục vụ mọi khách hàng</p>
+                    </div>
+                </div>
+                <div class="gallery-item medium">
+                    <img src="images/SELLER/SELLER1.jpg" alt="Quy trình sản xuất">
+                    <div class="gallery-item-caption">
+                        <h3>Quy Trình Sản Xuất</h3>
+                        <p>Công nghệ sấy hiện đại đảm bảo chất lượng tốt nhất</p>
+                    </div>
+                </div>
+                <div class="gallery-item medium">
+                    <img src="images/SELLER/SELLER2.jpg" alt="Cơ sở sản xuất">
+                    <div class="gallery-item-caption">
+                        <h3>Cơ Sở Sản Xuất</h3>
+                        <p>Nhà máy đạt chuẩn vệ sinh an toàn thực phẩm</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLogin()">&times;</span>
+            <h2>Đăng nhập người bán</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="username">Tên đăng nhập:</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <p id="errorMessage" class="error-message"></p>
+                <button type="submit" class="login-btn">Đăng nhập</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Orders Modal -->
+    <div id="ordersModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrders()">&times;</span>
+            <h2>Quản lý đơn hàng</h2>
+            <button onclick="logout()" class="logout-btn">Đăng xuất</button>
+            <div id="ordersList" class="orders-list">
+                <!-- Orders will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkLoginAndShowOrders() {
+            const isLoggedIn = localStorage.getItem('sellerLoggedIn') === 'true';
+            console.log('Checking login:', isLoggedIn);
+            
+            if (!isLoggedIn) {
+                document.getElementById('loginModal').style.display = 'block';
+            } else {
+                showOrders();
+            }
+        }
+
+        function showOrders() {
+            const isLoggedIn = localStorage.getItem('sellerLoggedIn') === 'true';
+            if (!isLoggedIn) {
+                alert('Vui lòng đăng nhập để xem đơn hàng');
+                document.getElementById('loginModal').style.display = 'block';
+                return;
+            }
+
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            console.log('Current orders:', orders);
+            
+            document.getElementById('ordersModal').style.display = 'block';
+            document.getElementById('ordersList').innerHTML = ''; // Clear previous
+            loadOrders();
+        }
+
+        function logout() {
+            localStorage.removeItem('sellerLoggedIn');
+            document.getElementById('ordersModal').style.display = 'none';
+            alert('Đã đăng xuất thành công');
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            console.log('handleLogin called');
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            console.log('Login attempt:', { username });
+            
+            if (username === 'seller' && password === 'nn') {
+                console.log('Login successful');
+                localStorage.setItem('sellerLoggedIn', 'true');
+                closeLogin();
+                showOrders();
+            } else {
+                console.log('Login failed');
+                errorMessage.textContent = 'Tên đăng nhập hoặc mật khẩu không đúng';
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function closeLogin() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        function closeOrders() {
+            document.getElementById('ordersModal').style.display = 'none';
+        }
+
+        function loadOrders() {
+            const ordersList = document.getElementById('ordersList');
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+            console.log('Loading orders:', orders);
+
+            if (!ordersList) {
+                console.error('ordersList element not found');
+                return;
+            }
+
+            if (orders.length === 0) {
+                ordersList.innerHTML = '<div class="no-orders">Không tìm thấy đơn hàng nào trong hệ thống</div>';
+                return;
+            }
+
+            let ordersHTML = '';
+            orders.forEach((order, index) => {
+                const subtotal = order.subtotal || order.totalAmount || 0;
+                const shippingFee = order.shippingFee || 30000;
+                const totalAmount = order.totalAmount || (subtotal + shippingFee);
+                const address = order.address || { fullName: order.userId || 'N/A', fullAddress: order.shippingAddress || 'N/A' };
+
+                ordersHTML += `
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div class="order-info">
+                                <h3>Đơn hàng #${index + 1}</h3>
+                                <p>Ngày: ${formatDate(order.orderDate)}</p>
+                                <p class="status-${order.status?.toLowerCase() || 'pending'}">
+                                    Trạng thái: ${getStatusInVietnamese(order.status || 'Pending')}
+                                </p>
+                            </div>
+                            <div class="order-actions">
+                                ${(!order.status || order.status === 'Pending') ? `
+                                    <button class="accept-btn" onclick="handleOrderAction(${index}, 'Confirmed')">Chấp nhận</button>
+                                    <button class="reject-btn" onclick="handleOrderAction(${index}, 'Rejected')">Từ chối</button>
+                                ` : order.status === 'Confirmed' ? `
+                                    <button class="print-btn" onclick="generateReceipt(${index})">In hóa đơn</button>
+                                ` : ''}
+                                <button class="delete-btn" onclick="deleteOrder(${index})">Xóa</button>
+                            </div>
+                        </div>
+                        <div class="shipping-info">
+                            <h4>Thông tin khách hàng</h4>
+                            <p><strong>Tên:</strong> ${address.fullName || 'N/A'}</p>
+                            <p><strong>Điện thoại:</strong> ${address.phone || 'N/A'}</p>
+                            <p><strong>Email:</strong> ${address.email || order.userId || 'N/A'}</p>
+                            <p><strong>Địa chỉ:</strong> ${address.fullAddress || 'N/A'}</p>
+                        </div>
+                        <div class="order-items">
+                            ${order.items.map(item => `
+                                <div class="order-item">
+                                    <img src="${item.image}" alt="${item.name}" class="item-image">
+                                    <div class="item-details">
+                                        <h4>${item.name}</h4>
+                                        <p>Số lượng: ${item.quantity}</p>
+                                        <p>Giá: ${formatPrice(item.price)} VND</p>
+                                    </div>
+                                    <div class="item-price">
+                                        <p><strong>Tổng: ${formatPrice(item.price * item.quantity)} VND</strong></p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="order-summary">
+                            <p>Tạm tính: ${formatPrice(subtotal)} VND</p>
+                            <p>Phí vận chuyển: ${formatPrice(shippingFee)} VND</p>
+                            <p class="total"><strong>Tổng cộng: ${formatPrice(totalAmount)} VND</strong></p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            ordersList.innerHTML = ordersHTML;
+        }
+
+        function handleOrderAction(index, newStatus) {
+            console.log('Handling order action:', index, newStatus);
+            
+            try {
+                let orders = JSON.parse(localStorage.getItem('orders')) || [];
+                console.log('Orders before update:', orders);
+                
+                if (index >= 0 && index < orders.length) {
+                    // Update the status
+                    orders[index].status = newStatus;
+                    
+                    // Save back to localStorage
+                    localStorage.setItem('orders', JSON.stringify(orders));
+                    console.log('Orders after update:', orders);
+                    
+                    if (newStatus === 'Confirmed') {
+                        generateReceipt(index);
+                    }
+                    
+                    // Show feedback to user
+                    alert(`Đơn hàng #${orders[index].displayId} đã được ${newStatus.toLowerCase()}`);
+                    
+                    // Reload the orders list
+                    loadOrders();
+                } else {
+                    console.error(`Invalid order index: ${index}`);
+                    alert('Error: Could not update order status');
+                }
+            } catch (error) {
+                console.error('Error updating order status:', error);
+                alert('Error: Could not update order status');
+            }
+        }
+
+        function deleteOrder(index) {
+            if (confirm('Are you sure you want to delete this order? This action cannot be undone.')) {
+                try {
+                    let orders = JSON.parse(localStorage.getItem('orders')) || [];
+                    if (index >= 0 && index < orders.length) {
+                        orders.splice(index, 1);
+                        localStorage.setItem('orders', JSON.stringify(orders));
+                        loadOrders();
+                        alert('Đơn hàng đã được xóa thành công');
+                    }
+                } catch (error) {
+                    console.error('Error deleting order:', error);
+                    alert('Error: Could not delete order');
+                }
+            }
+        }
+
+        function generateReceipt(index) {
+            try {
+                const orders = JSON.parse(localStorage.getItem('orders')) || [];
+                const order = orders[index];
+                
+                if (!order) {
+                    throw new Error('Order not found');
+                }
+
+                // Create new PDF document
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+
+                // Add header
+                doc.setFontSize(20);
+                doc.text('Hóa đơn', 105, 20, { align: 'center' });
+                
+                // Add order details
+                doc.setFontSize(12);
+                doc.text(`Đơn hàng #${index + 1}`, 20, 40);
+                doc.text(`Ngày: ${formatDate(order.orderDate)}`, 20, 50);
+                doc.text(`Trạng thái: ${order.status}`, 20, 60);
+
+                // Add customer information
+                doc.text('Thông tin khách hàng:', 20, 80);
+                doc.setFontSize(10);
+                doc.text(`Tên: ${order.address.fullName}`, 30, 90);
+                doc.text(`Điện thoại: ${order.address.phone}`, 30, 100);
+                doc.text(`Email: ${order.address.email}`, 30, 110);
+                doc.text(`Địa chỉ: ${order.address.fullAddress}`, 30, 120);
+
+                // Add items table
+                const tableColumn = ['Item', 'Price (VND)', 'Quantity', 'Total (VND)'];
+                const tableRows = order.items.map(item => [
+                    item.name,
+                    formatPrice(item.price),
+                    item.quantity,
+                    formatPrice(item.price * item.quantity)
+                ]);
+
+                doc.autoTable({
+                    startY: 140,
+                    head: [tableColumn],
+                    body: tableRows,
+                });
+
+                // Add totals
+                const finalY = doc.lastAutoTable.finalY + 10;
+                doc.text(`Tạm tính: ${formatPrice(order.subtotal)} VND`, 140, finalY);
+                doc.text(`Phí vận chuyển: ${formatPrice(order.shippingFee)} VND`, 140, finalY + 10);
+                doc.text(`Tổng cộng: ${formatPrice(order.totalAmount)} VND`, 140, finalY + 20);
+
+                // Add footer
+                doc.setFontSize(10);
+                doc.text('Cảm ơn bạn đã mua hàng!', 105, finalY + 40, { align: 'center' });
+
+                // Save the PDF
+                doc.save(`hoa-don-${index + 1}.pdf`);
+
+            } catch (error) {
+                console.error('Error generating receipt:', error);
+                alert('Error: Could not generate receipt');
+            }
+        }
+        
+        function formatDate(dateString) {
+            if (!dateString) return 'N/A';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function formatPrice(price) {
+            if (price === undefined || price === null) return '0';
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        function getStatusInVietnamese(status) {
+            switch(status) {
+                case 'Pending': return 'Chờ xử lý';
+                case 'Confirmed': return 'Đã xác nhận';
+                case 'Rejected': return 'Đã từ chối';
+                default: return status;
+            }
+        }
+
+        // Check login status and load orders when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('sellerLoggedIn') === 'true';
+            if (isLoggedIn) {
+                loadOrders();
+            }
+        });
+    </script>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Liên Hệ</h3>
+                <p>Email: contact@xoaisaykho.com</p>
+                <p>Điện thoại: +84 123 456 789</p>
+                <p>Địa chỉ: 123 Đường ABC, Quận XYZ, TP.HCM</p>
+            </div>
+            <div class="footer-section">
+                <h3>Theo Dõi</h3>
+                <p>Facebook</p>
+                <p>Instagram</p>
+                <p>Twitter</p>
+            </div>
+            <div class="footer-section">
+                <h3>Chính Sách</h3>
+                <p>Điều khoản sử dụng</p>
+                <p>Chính sách bảo mật</p>
+                <p>Chính sách vận chuyển</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Xoài Sấy Khô. Mọi quyền được bảo lưu.</p>
+        </div>
+    </footer>
+</body>
+</html>
